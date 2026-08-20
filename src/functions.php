@@ -1,12 +1,9 @@
 <?php
-
-function redirect(string $location): void
-{
-  header('Location: ' . $location, true, 302);
-  exit();
+function html_escape($var): string {
+    return htmlspecialchars($var ?? '', ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8");
 }
 
-function html_escape(string|null $text): string
-{
-  return htmlspecialchars($text ?? '', ENT_QUOTES, 'UTF-8', false);
+function redirect(string $url): void {
+    header("Location: $url");
+    exit();
 }
